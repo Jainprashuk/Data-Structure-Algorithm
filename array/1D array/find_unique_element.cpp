@@ -8,7 +8,7 @@ int unique_element(vector<int> arr){
     int ans = 0;
     for (int i = 0; i < arr.size(); i++)
     {
-        ans = arr[i] ^ ans;
+        ans = arr[i] ^ ans;   // xor operator
     }
 
     return ans;
