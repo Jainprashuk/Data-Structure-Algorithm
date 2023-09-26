@@ -21,7 +21,7 @@ Before you get started, make sure you have the following prerequisites:
 
 If you need to install any specific tools or libraries for a particular language or environment, you can find those instructions in the respective folders.
 
-### Array And Vector
+### Array & Vector
 # Array:
 An array is a fixed-size data structure that stores elements of the same data type sequentially in memory. It provides constant-time access to elements by index but requires predefined size allocation, making it inflexible for dynamic data.
 
