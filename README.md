@@ -29,9 +29,6 @@ A vector, often referred to as a dynamic array, is a resizable and more versatil
 ## Char Array
 A character array is a fixed-size data structure that stores a sequence of characters, typically used to represent strings in C and C++. It consists of a contiguous memory block where each element is a character. Char arrays are null-terminated, meaning they have a special character ('\0') at the end to indicate the string's termination. They are memory-efficient for basic string operations but require careful handling to avoid buffer overflows and ensure proper termination.
 
-## Char Array
-A character array is a fixed-size data structure that stores a sequence of characters, typically used to represent strings in C and C++. It consists of a contiguous memory block where each element is a character. Char arrays are null-terminated, meaning they have a special character ('\0') at the end to indicate the string's termination. They are memory-efficient for basic string operations but require careful handling to avoid buffer overflows and ensure proper termination.
-
 
 ## Strings
 Strings are versatile data structures used to represent sequences of characters in various programming languages. Unlike character arrays, strings can dynamically grow or shrink, making them suitable for handling text of varying lengths. They offer a wide range of built-in operations for text manipulation, making string handling more convenient and efficient. Strings can be concatenated, sliced, searched, and modified with ease, making them a fundamental and highly used data type in many programming tasks, including text processing, data parsing, and user interface development.
