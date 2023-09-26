@@ -77,4 +77,4 @@ Tabulation: Tabulation, or bottom-up DP, involves solving subproblems iterativel
 Clone this repository to your local machine using:
 
 ```bash
-git clone https://github.com/your-username/dsa-repo.git
+git clone [https://github.com/Jainprashuk/Data-Structure-Algorithm.git]
