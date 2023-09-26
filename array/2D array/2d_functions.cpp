@@ -13,6 +13,24 @@ void print_array(int brr[3][3])
     }
 }
 
+
+void search(int brr[3][3],int key)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++) // Corrected termination condition
+        {
+            if (brr[i][j]==key)
+            {
+                /* code */
+                cout<<"found";
+            }
+            
+        }
+        cout << endl;
+    }
+}
+
 void row_sum(int brr[3][3])
 {
     for (int i = 0; i < 3; i++)
@@ -106,6 +124,7 @@ int main()
     col_sum(arr);
     max_element(arr);
     min_element(arr);
+    search(arr,12);
     transpose(arr);
 
     return 0;

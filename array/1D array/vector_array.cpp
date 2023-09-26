@@ -32,7 +32,7 @@ int main()
     arr.size();
 
     // to check empty array
-    cout<< arr.empty()<<endl;
+    cout<< arr.empty()<<endl; 
 
     // to print
     for (int i = 0; i < arr.size(); i++)

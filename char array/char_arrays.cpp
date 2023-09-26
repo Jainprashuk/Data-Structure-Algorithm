@@ -2,8 +2,8 @@
 using namespace std;
 int main(){
 
-    // char arr[100];
-    // cout<<"Enter your Name : ";
+    char arr[100];
+    cout<<"Enter your Name : ";
     // cin>>arr;
     // cout<<arr;
 
@@ -14,9 +14,9 @@ int main(){
     // arr[3]='n';
     // cout<<arr;
 
-    char arr[100] ;
+    // char arr[100] ;
     // cin>>arr;        //will take only till space or tabs
-     cin.getline(arr,100 );
+    cin.getline(arr,100 );
     cout<<arr;
     
 

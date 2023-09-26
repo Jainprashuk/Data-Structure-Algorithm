@@ -114,15 +114,15 @@ int main(){
 
 
 
-    int p=binary_search_first(arr,10);
-    if (p != -1)
-    {
-        /* code */
-        cout<<"first occurance at index : "<<p<<endl;
-    }
-    else{
-        cout<<"element not found "<<endl;
-    }
+    // int p=binary_search_first(arr,10);
+    // if (p != -1)
+    // {
+    //     /* code */
+    //     cout<<"first occurance at index : "<<p<<endl;
+    // }
+    // else{
+    //     cout<<"element not found "<<endl;
+    // }
 
     int q=binary_search_last(arr,10);
     if (q != -1)

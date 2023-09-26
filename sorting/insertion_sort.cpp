@@ -8,7 +8,7 @@ void InsertionSort(int arr[], int n)
     {
         int key = arr[i];
         int j = i - 1;
-        for (; j >= 0; j--)
+        for ( ; j >= 0; j--)
         {
             if (arr[j] > key)
             {
