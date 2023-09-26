@@ -4,7 +4,7 @@ Welcome to the Data Structures and Algorithms (DSA) repository! This repository 
 
 ## Table of Contents
 - [Getting Started](#getting-started)
-- [Array & Vector](#Array-Vector)
+- [Array And Vector](#array-and-Vector)
 - [Char Array](#Char-Array)
 - [Strings](#Strings)
 - [Searching Algorithms](#Searching-Algorithms)
@@ -21,7 +21,7 @@ Before you get started, make sure you have the following prerequisites:
 
 If you need to install any specific tools or libraries for a particular language or environment, you can find those instructions in the respective folders.
 
-## Array & Vector
+## Array And Vector
 
 An array is a fixed-size data structure that stores elements of the same data type sequentially in memory. It provides constant-time access to elements by index but requires predefined size allocation, making it inflexible for dynamic data.
 
