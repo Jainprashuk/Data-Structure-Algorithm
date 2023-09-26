@@ -2,7 +2,7 @@
 
 Welcome to the Data Structures and Algorithms (DSA) repository! This repository contains a collection of common DSA implementations and algorithmic solutions in various programming languages. Whether you're learning DSA or looking for efficient code snippets, you'll find valuable resources here.
 
-## Table of Contents
+## Table of Contents  
 - [Getting Started](#getting-started)
 - [Array And Vector](#array-and-Vector)
 - [Char Array](#Char-array)
