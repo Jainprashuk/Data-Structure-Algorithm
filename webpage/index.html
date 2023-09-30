@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,11 +10,12 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-image: url('bg1.jpg'); /* Add your image file path here */
-            background-repeat: no-repeat;
+            background-image: url('bg.jpg');
+            /* Add your image file path here */
             background-size: cover;
-            background-position: center;
-            height: 100vh;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
         }
 
         video {
@@ -37,7 +39,10 @@
 
         h1 {
             font-size: 5rem;
-            white-space: nowrap; /* Keeps the text on one line */
+            white-space: nowrap;
+            /* Keeps the text on one line */
+            margin: 0;
+            padding: 0;
         }
 
         .explore-button {
@@ -54,17 +59,55 @@
         .explore-button:hover {
             background-color: #ff4520;
         }
+
+        /* Responsive styles */
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1rem;
+            }
+
+            .explore-button {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (min-width: 500px) and (max-width: 1000px) {
+
+            /* Your CSS styles for screens between 769px and 1200px wide */
+            h1 {
+                font-size: 2rem;
+            }
+
+            .explore-button {
+                padding: 10px 20px;
+            }
+        }
+
+        @media (min-width: 1000px)  {
+
+            /* Your CSS styles for screens between 769px and 1200px wide */
+            h1 {
+                font-size: 4rem;
+            }
+
+            .explore-button {
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <video autoplay muted loop>
         <source src="bg.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    
+
     <div class="content">
         <h1>Data Structures and Algorithms</h1>
+        <br><br><br>
         <a href="https://github.com/Jainprashuk/Data-Structure-Algorithm" class="explore-button">Explore GitHub</a>
     </div>
 </body>
+
 </html>
