@@ -1,5 +1,4 @@
-// C++ program to check whether a number is a
-// Sphenic number or not
+// C++ program to check whether a number is a Sphenic number or not
 #include<bits/stdc++.h>
 using namespace std;
 //create a global array of size 10001;
