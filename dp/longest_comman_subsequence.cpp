@@ -6,7 +6,6 @@ using namespace std;
 // Y[0..n-1]
 int lcs(string X, string Y, int m, int n)
 {
-
 	// Initializing a matrix of size
 	// (m+1)*(n+1)
 	int L[m + 1][n + 1];

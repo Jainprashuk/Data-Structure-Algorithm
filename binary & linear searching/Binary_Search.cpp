@@ -1,6 +1,9 @@
-
 #include <iostream>
 using namespace std;
+
+int sorting(){
+    
+}
 
 int Binary_search(int arr[] , int n ,int key){
     int start = 0;
