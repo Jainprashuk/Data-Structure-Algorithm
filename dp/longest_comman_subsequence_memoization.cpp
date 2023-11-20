@@ -23,8 +23,8 @@ int lcs(char* X, char* Y, int m, int n,
 // Driver code
 int main()
 {
-	char X[] = "AGGTAB";
-	char Y[] = "GXTXAYB";
+	char X[] = "AGGTABBBBB";
+	char Y[] = "GXTXAYBBBB";
 
 	int m = strlen(X);
 	int n = strlen(Y);
