@@ -1,0 +1,1 @@
+// can be done by : single pointer , slow fast algo , by using map
