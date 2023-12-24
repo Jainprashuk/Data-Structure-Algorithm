@@ -1,4 +1,3 @@
-// can be done by : single pointer , slow fast algo , by using mapp
 #include<iostream>
 using namespace std;
 
@@ -40,24 +39,50 @@ int Length(Node* head){
     return count;
 }
 
-bool CheckCircular(Node* &head){
-    Node* slow = head;
-    Node* fast = head;
-
-    while (fast != NULL  && fast->next!=NULL)
+Node* ReverseLinkedListInKGroups(int k , Node* &head){
+    if (head == NULL)
     {
-        fast = fast->next->next;
-        slow = slow ->next;
-        if (fast == slow)
-        {
-            return true;
-        }
-        
+        return NULL;
     }
 
-    return false;
-    
+    int len = Length(head);
 
+    if (k>len)
+    {
+        return head;
+    }
+
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* forward = NULL;
+
+    int count = 0;
+
+    while (curr!=NULL && count < k)
+    {
+        /* code */
+        forward = curr->next;
+        curr -> next = prev;
+
+        prev = curr;
+        curr = forward;
+
+        count++;
+    }
+
+    if (forward!=NULL)
+    {
+        /* code */
+        head->next = ReverseLinkedListInKGroups(k,forward);
+    }
+
+    return prev;
+    
+    
+    
+    
+    
+    
 }
 
 
@@ -74,11 +99,11 @@ int main(){
     first->next = second;
     second->next = third;
     third->next = fourth;
-    // fourth->next = head;
 
-    // PrintLinkedList(head);
-    cout<<CheckCircular(head);
-   
+    PrintLinkedList(head);
+    head = ReverseLinkedListInKGroups(2,head);
+    cout<<endl;
+    PrintLinkedList(head);
 
 
 }
