@@ -1,0 +1,1 @@
+// approaches : by counting , by 3 linked list

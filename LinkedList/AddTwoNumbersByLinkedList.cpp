@@ -1,0 +1,1 @@
+// approach : by reversing both numbers and then sum and reverse it again

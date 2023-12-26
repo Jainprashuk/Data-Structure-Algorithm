@@ -6,6 +6,7 @@
         "chrono": "cpp",
         "algorithm": "cpp",
         "*.tcc": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "ostream": "cpp"
     }
 }
