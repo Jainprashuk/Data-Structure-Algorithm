@@ -1,2 +1,4 @@
-dListViaRecursion(prev , curr);
-    PrintLinkedList(head,ta
+if (forward!=NULL)
+    // {
+    //     head->next = ReverseInKGroups(k,forward);
+    // }

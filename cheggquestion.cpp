@@ -1,39 +1,41 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Node{
-    public:
-    int data;
-    Node* next;
+class Node
+{
 
-    Node(){
+public:
+    int data;
+    Node *next;
+
+    Node()
+    {
         data = 0;
         next = NULL;
     }
 
-    Node(int data){
+    Node(int data)
+    {
         this->data = data;
         this->next = NULL;
     }
 };
 
-void PrintLinkedList(Node* head , Node* tail){
-    Node* temp = head;
-    while (temp!=NULL)
+void PrintLinkedList(Node *head)
+{
+    Node *temp = head;
+    while (temp != NULL)
     {
-        cout<<temp->data<<" ";
+        cout << temp->data << " ";
         temp = temp->next;
     }
-
-    cout<<endl;
-    cout<< "( head , tail ) = ("<<head->data<<","<<tail->data<<")"<<endl;
-    cout<<endl;
 }
 
-int LengthOfLinkedList(Node* head){
-    Node* temp = head;
+int LengthOfLinkedList(Node *head)
+{
+    Node *temp = head;
     int count = 0;
-    while (temp!=NULL)
+    while (temp != NULL)
     {
         count++;
         temp = temp->next;
@@ -41,75 +43,87 @@ int LengthOfLinkedList(Node* head){
     return count;
 }
 
-void insertAtHead(int data ,Node* &head , Node* &tail ){
+void InsertAtHead(int data, Node *&head, Node *&tail)
+{
     if (head == NULL)
     {
-        Node* NewNode = new Node(data);
+        Node *NewNode = new Node(data);
         head = NewNode;
         tail = NewNode;
         return;
     }
-    Node* NewNode = new Node(data);
+
+    Node *NewNode = new Node(data);
     NewNode->next = head;
     head = NewNode;
+    tail = NewNode;
 }
 
-void insertAtTail(int data ,Node* &head , Node* &tail){
+void InsertAtTail(int data, Node *&head, Node *&tail)
+{
+
     if (head == NULL)
     {
-        Node* NewNode = new Node(data);
+        Node *NewNode = new Node(data);
+        // NewNode->next = head;
         head = NewNode;
         tail = NewNode;
         return;
     }
 
-    Node* NewNode =  new Node(data);
+    Node *NewNode = new Node(data);
     tail->next = NewNode;
     tail = NewNode;
 }
 
-void insertAtPosition(int data , int pos , Node* &head , Node* &tail){
-
-    if (pos == 0)
+void InsertAtPosition(int data, int position, Node *&head, Node *&tail)
+{
+    if (head == NULL)
     {
-        insertAtHead(data,head,tail);
+        Node *NewNode = new Node(data);
+        // NewNode->next = head;
+        head = NewNode;
+        tail = NewNode;
         return;
     }
-    
+
+    if (position == 1)
+    {
+        InsertAtHead(data, head, tail);
+        return;
+    }
+
     int len = LengthOfLinkedList(head);
 
-    if (pos >= len)
+    if (position >= len)
     {
-        insertAtTail(data,head,tail);
-        return;
+        InsertAtTail(data, head, tail);
     }
 
-    Node* NewNode = new Node(data);
-    Node* prev = head;
+    Node *prev = head;
     int i = 1;
-    while (i<pos-1)
+    while (i < position - 1)
     {
         prev = prev->next;
         i++;
     }
-    Node* curr = prev->next;
+    Node *curr = prev->next;
 
-    
+    Node *NewNode = new Node(data);
     NewNode->next = curr;
     prev->next = NewNode;
-    
 }
 
-void DeleateAtPosition(int position , Node* &head , Node* &tail){
-    if (head == NULL)
-    {
-        cout<<"Linked List Is Empty";
-        return;
-    }
+void Delete(int position, Node *&head, Node *&tail)
+{
+    // if (head = NULL)
+    // {
+    //     cout<<"no elements";
+    // }
 
-    if (position==1)
+    if (position == 1)
     {
-        Node* temp = head;
+        Node *temp = head;
         head = head->next;
         temp->next = NULL;
         delete temp;
@@ -118,233 +132,215 @@ void DeleateAtPosition(int position , Node* &head , Node* &tail){
 
     int len = LengthOfLinkedList(head);
 
-    if (len == position)
+    if (position >= len)
     {
-        Node* prev = head;
-        int i =1;
-        while (i<len-1)
+        Node *temp = tail;
+        Node *prev = head;
+        int i = 1;
+        while (i < len - 1)
         {
-            prev = prev -> next;
+            /* code */
+            prev = prev->next;
             i++;
         }
-        Node* temp = tail;
         tail = prev;
         prev->next = NULL;
         delete temp;
-        return; 
+        return;
     }
 
+    Node *prev = head;
     int i = 1;
-    Node* prev = head;
-    while (i<position-1)
+    while (i < position - 1)
     {
+        /* code */
         prev = prev->next;
         i++;
     }
-    
-    Node* curr = prev->next;
+    Node *curr = prev->next;
 
-    Node* temp = curr;
+    Node *temp = curr;
+    // curr->next = NULL;
     prev->next = curr->next;
-    curr->next = NULL;
-    delete curr;
-    return;
-    
+    delete temp;
 }
 
+Node *ReverseLinkedListViaLoop(Node *head)
+{
+    Node *prev = NULL;
+    Node *curr = head;
+    Node *forwad = NULL;
 
-Node* ReverseLinkedList(Node* head){
-    Node* prev = NULL;
-    Node* curr = head;
-    Node* forward = NULL;
-
-    while (curr!=NULL)
+    while (curr != NULL)
     {
-        forward = curr->next;
+        forwad = curr->next;
         curr->next = prev;
 
         prev = curr;
-        curr = forward;
+        curr = forwad;
     }
 
     return prev;
-}
-
-Node* ReverseLinkedListViaRecursion(Node* &prev , Node* &curr ){
+};
+Node *ReverseLinkedListViaRecursion(Node *prev, Node *curr)
+{
     if (curr == NULL)
     {
         return prev;
     }
 
-    Node* forward = curr->next;
+    Node *forward = curr->next;
     curr->next = prev;
 
-    ReverseLinkedListViaRecursion(curr,forward);
+    ReverseLinkedListViaRecursion(curr, forward);
+};
 
-}
+int MiddleOfLinkedList(Node *head)
+{
+    Node *slow = head;
+    Node *fast = head;
 
-int MiddleElementVia(Node* head){
-    Node* slow = head;
-    Node* fast = head;
-
-    while (fast->next != NULL && fast->next->next !=NULL)
+    while (fast != NULL && fast->next != NULL)
     {
+        /* code */
         slow = slow->next;
-        fast = fast ->next->next;
-        
+        fast = fast->next->next;
     }
-    
+
     return slow->data;
 }
 
-Node* ReverseLinkedListInKGroups(int k , Node* head){
+Node *ReverseInKGroups(int k, Node *&head)
+{
+    Node *prev = NULL;
+    Node *curr = head;
+    Node *forward = NULL;
 
-    int len = LengthOfLinkedList(head);
-
-    if (k>len)
-    {
-        return head;
-    }
-    
-    Node* prev = NULL;
-    Node* curr = head;
-    Node* forward = NULL;
-
-int count = 0;
-    while (curr!=NULL && count<k)
+    int i = 0;
+    while (curr != NULL && i < k)
     {
         forward = curr->next;
         curr->next = prev;
-
         prev = curr;
         curr = forward;
-
-        count++;
+        i++;
     }
 
-    if(forward!=NULL){
-        head->next = ReverseLinkedListInKGroups(k,forward);
+    if (forward != NULL)
+    {
+        head->next = ReverseInKGroups(k, forward);
     }
 
     return prev;
-    
 }
 
+bool CkeckCircularLinkedList(Node *head)
+{
+    Node *slow = head;
+    Node *fast = head;
 
-bool CheckCircular(Node* head){
-    Node* slow = head;
-    Node* fast = head;
-
-    while (fast!=NULL && fast->next!=NULL)
+    while (fast != NULL && fast->next != NULL)
     {
-
-        slow=slow->next;
-        fast=fast->next->next;
-
-        if (fast==slow)
-        {
-            return true;
-        }
-
-        
-    }
-  return false;  
-}
-
-int StartPointOfLoop(Node* head){
-    Node* slow = head;
-    Node* fast = head;
-
-    bool hascycle = false;
-
-    while (fast!=NULL && fast->next!=NULL)
-    {
-        fast= fast->next->next;
         slow = slow->next;
+        fast = fast->next->next;
 
         if (fast == slow)
         {
-            hascycle = true;
+            /* code */
+            return true;
+        }
+    }
+    return false;
+}
+
+int StartPointOfLoop(Node *head)
+{
+    Node* slow = head;
+    Node* fast = head;
+
+    bool hasloops = false;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (fast == slow)
+        {
+            hasloops = true;
             break;
         }
-        
     }
 
-    if (!hascycle)
+    if (!hasloops)
     {
+        /* code */
         return -1;
     }
-    
-slow = head;
+
+    slow = head;
 
     while (slow != fast)
     {
-        fast = fast->next;
+        /* code */
         slow = slow->next;
+        fast = fast->next;
     }
 
     return slow->data;
-    
 }
 
 
+void RemoveLoop(){
+    
+}
 
+int main()
+{
 
+    Node *head = new Node(0);
+    Node *first = new Node(1);
+    Node *second = new Node(2);
+    Node *third = new Node(3);
+    Node *tail = new Node(4);
 
-int main(){
+    head->next = first;
+    first->next = second;
+    second->next = third;
+    third->next = tail;
+    tail->next = first;
 
-    // Node* head = NULL;
-    // Node* tail = NULL;
+    // PrintLinkedList(head);
+    // cout << endl;
 
+    // InsertAtHead(100,head,tail);
+    // InsertAtTail(100, head, tail);
+    // PrintLinkedList(head);
+    // cout << endl<<head->data<<","<<tail->data;
 
-    // insertAtHead(5,head,tail);
-    // insertAtHead(15,head,tail);
-    // insertAtHead(51,head,tail);
-    // insertAtHead(53,head,tail);
-    // insertAtTail(1000,head,tail);
-    // PrintLinkedList(head,tail);
-    // insertAtPosition(0,1,head,tail);
-    // PrintLinkedList(head,tail);
-    // DeleateAtPosition(4,head,tail);
-    // PrintLinkedList(head,tail);
+    // InsertAtPosition(233, 2, head, tail);
+    // PrintLinkedList(head);
+    // cout << endl;
 
-    // Node* Reversed = ReverseLinkedList(head);
-    // cout<<"reversed linked list : ";
-    // PrintLinkedList(Reversed,tail);
+    // Delete(2, head, tail);
+    // PrintLinkedList(head);
+    // cout << endl;
+
+    // head =ReverseLinkedListViaLoop(head);
+    // PrintLinkedList(head);
+    // cout<<endl;
 
     // Node* prev = NULL;
     // Node* curr = head;
+    // head = ReverseLinkedListViaRecursion(prev,curr);
+    // PrintLinkedList(head);
 
-    // Node* ReversedRecursion = ReverseLinkedListViaRecursion(prev,curr);
-    // cout<<"reversed linked list : ";
-    // PrintLinkedList(ReversedRecursion,tail);
+    // cout<<endl<<MiddleOfLinkedList(head);
 
-    // head = ReverseLinkedListViaRecursion(prev , curr);
-    // PrintLinkedList(head,tail);
+    // cout<<endl;
 
-    // cout<<MiddleElementVia(head);
+    // head = ReverseInKGroups(2,head);
+    // PrintLinkedList(head);
 
-    // head = ReverseLinkedListInKGroups(2,head);
-    // PrintLinkedList(head,tail);
-
-    Node* head = new Node(1);
-    Node* first = new Node(2);
-    Node* second = new Node(3);
-    Node* third = new Node(4);
-    Node* fourth = new Node(5);
-    Node* tail = new Node(6);
-    head->next = first;
-    first->next = second;
-    second->next=third;
-    third->next=fourth;
-    fourth->next=tail;
-    tail->next=second;
-    // cout<<CheckCircular(head);
-    cout<<StartPointOfLoop(head);
-
-
-
-
-
-
+    cout << StartPointOfLoop(head);
 }
