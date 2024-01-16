@@ -1,4 +1,3 @@
-if (forward!=NULL)
-    // {
-    //     head->next = ReverseInKGroups(k,forward);
-    // }
+ ,100);
+    InsertAtHead(head ,100);
+    InsertAtHead(head ,100);

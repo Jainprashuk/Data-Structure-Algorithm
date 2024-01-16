@@ -79,25 +79,25 @@ int main() {
 
         s.push1(10);
         s.print();
-        s.push1(20);
-        s.print();
-        s.push1(30);
-        s.print();
-        s.push1(40);
-        s.print();
-        s.push1(50);
-        s.print();
+        // s.push1(20);
+        // s.print();
+        // s.push1(30);
+        // s.print();
+        // s.push1(40);
+        // s.print();
+        // s.push1(50);
+        // s.print();
 
         s.push2(100);
         s.print();
-        s.push2(110);
-        s.print();
-        s.push2(120);
-        s.print();
-         s.push2(130);
-        s.print();
-        s.push2(140);
-        s.print();
+        // s.push2(110);
+        // s.print();
+        // s.push2(120);
+        // s.print();
+        //  s.push2(130);
+        // s.print();
+        // s.push2(140);
+        // s.print();
         
         s.pop1();
         s.print();
