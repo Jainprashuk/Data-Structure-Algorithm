@@ -1,0 +1,26 @@
+************Trees***********
+
+
+// Type Of Non-Linear Data-Structure
+
+// tree which have atmost 2 child are called Bst;
+// tree which have atmost n (unknown) child are called N-aray tree;
+ 
+Node - 
+Root - 
+Parent -
+Child -
+Ancestor - 
+Descendent - 
+Siblings - 
+Leaf -
+
+for traversing - level order traversing ,  inorder , postorder , preorder , moris 
+
+for craeting a tree : 
+1) level order traversing
+2) By recurssion
+   (i) - create root Node
+  (ii) - left wala reccusion for left side
+  (iii)- right wala reccusion for right side
+
