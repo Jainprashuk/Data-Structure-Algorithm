@@ -81,21 +81,23 @@ void LevelOrderTraversal(Node *root)
     }
 }
 
-int length(Node *root)
-{
-    if (root == NULL)
+bool IdenticalTrees(Node* root1 , Node* root2){
+    if (root1==NULL && root2==NULL)
     {
         /* code */
-        return 0;
+        return 1;
     }
 
-    int leftHeight = length(root->left);
-    int rightHeight = length(root->right);
+    if (root1!=NULL && root2!=NULL)
+    {
+        /* code */
+        return(root1->data == root2->data && IdenticalTrees(root1->left,root2->left) && IdenticalTrees(root1->right,root2->right))  ;
+    }
 
-    int ans = max(leftHeight, rightHeight) + 1;
+    return 0;
 
-    return ans;
 }
+
 
 int main()
 {

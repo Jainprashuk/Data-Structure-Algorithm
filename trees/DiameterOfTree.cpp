@@ -97,6 +97,26 @@ int length(Node *root)
     return ans;
 }
 
+int Diameter(Node* root){
+    if (root==NULL)
+    {
+        /* code */
+        return 0;
+    }
+
+    int case1 = Diameter(root->left);
+    int case2 = Diameter(root->right);
+    
+    int case3 = length(root->left) + length(root->right);
+
+    int ans = max(case1 , max(case2,case3));
+
+    return ans;
+
+
+    
+}
+
 int main()
 {
     Node *root = NULL;

@@ -23,4 +23,18 @@ for craeting a tree :
    (i) - create root Node
   (ii) - left wala reccusion for left side
   (iii)- right wala reccusion for right side
+  
 
+Balanced Binary Tree :
+A balanced binary tree is a binary tree that follows the 3 conditions:
+The height of the left and right tree for any node does not differ by more than 1.
+The left subtree of that node is also balanced.
+The right subtree of that node is also balanced
+
+
+Types of trees :
+1- Binary Tree
+2- perfect(Full) Binary tree
+3- compleate binary tree
+4- Balanced tree
+5- Unbalanced binary tree

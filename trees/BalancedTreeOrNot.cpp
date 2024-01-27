@@ -1,3 +1,5 @@
+// in a tree at each node if a absolute difreence is atmost 1 at it left and right tree
+
 // no of nodes with the longest path between root and leaf
 
 #include <iostream>
@@ -81,7 +83,7 @@ void LevelOrderTraversal(Node *root)
     }
 }
 
-int length(Node *root)
+int Height(Node *root)
 {
     if (root == NULL)
     {
@@ -89,13 +91,45 @@ int length(Node *root)
         return 0;
     }
 
-    int leftHeight = length(root->left);
-    int rightHeight = length(root->right);
+    int leftHeight = Height(root->left);
+    int rightHeight = Height(root->right);
 
     int ans = max(leftHeight, rightHeight) + 1;
 
     return ans;
 }
+
+bool BalancedTree(Node* root){
+    if (root == NULL)
+    {
+        /* code */
+        return true;
+    }
+
+    int leftHeight = Height(root->left);
+    int rightHeight = Height(root->right);
+
+    int diff = abs(leftHeight-rightHeight);
+
+    bool ans = diff<=1;
+
+    bool leftmereccursion = BalancedTree(root->left);
+    bool rightmereccursion = BalancedTree(root->right);
+
+    if (ans && leftmereccursion && rightmereccursion)
+    {
+        /* code */
+        return true;
+    }else{
+        return false;
+    }
+    
+
+
+
+    
+}
+
 
 int main()
 {
