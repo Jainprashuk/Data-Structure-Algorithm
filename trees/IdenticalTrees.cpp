@@ -84,7 +84,6 @@ void LevelOrderTraversal(Node *root)
 bool IdenticalTrees(Node* root1 , Node* root2){
     if (root1==NULL && root2==NULL)
     {
-        /* code */
         return 1;
     }
 

@@ -1,7 +1,5 @@
 // in a tree at each node if a absolute difreence is atmost 1 at it left and right tree
 
-// no of nodes with the longest path between root and leaf
-
 #include <iostream>
 #include <queue>
 using namespace std;
