@@ -112,8 +112,20 @@ int Diameter(Node* root){
     int ans = max(case1 , max(case2,case3));
 
     return ans;
+  
+}
 
-
+bool CheckIdentical(Node* root1 , Node* root2){
+    if (root1==nullptr && root2==nullptr)
+    {
+        /* code */
+        return true;
+    }
+    
+    if (root1!=nullptr && root2!=nullptr){
+        return( root1->data == root2->data && CheckIdentical(root1->left , root2->left) && CheckIdentical(root1->right , root2->right));
+    }
+    
     
 }
 

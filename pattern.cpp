@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+
 using namespace std;
 
 class Node
@@ -12,114 +13,139 @@ public:
     Node(int data)
     {
         this->data = data;
-        left = NULL;
-        right = NULL;
+        left = nullptr;
+        right = nullptr;
     }
 };
 
 Node *BuildTree()
 {
     int data;
-    cout << "Enter The Value Of Root : ";
+    cout << "Enter The value of root : ";
     cin >> data;
 
     if (data == -1)
     {
-        return NULL;
+        /* code */
+        return nullptr;
     }
 
     Node *root = new Node(data);
 
-    cout << "Enter The Data for left of " << data << " : " << endl;
+    cout << "Enter data for left of " << data << " :" << endl;
     root->left = BuildTree();
 
-    cout << "Enter The Data for right of " << data << " : " << endl;
+    cout << "Enter data for right of " << data << " :" << endl;
     root->right = BuildTree();
 
     return root;
 }
 
-void LevelOrderTraversal(Node *root)
+void LevelOrderTraversing(Node *root)
 {
     queue<Node *> q;
     q.push(root);
-    q.push(NULL);
 
     while (!q.empty())
     {
-        // step A
+        /* code */
         Node *temp = q.front();
 
-        // step B
         q.pop();
 
-        if (temp == NULL)
-        {
-            cout << endl;
-            if (!q.empty())
-            {
-                q.push(NULL);
-            }
-        }
-        else
-        {
-            // step c
-            cout << temp->data << " ";
+        cout << temp->data << " ";
 
-            // step d
-            if (temp->left)
-            {
-                q.push(temp->left);
-            }
-            if (temp->right)
-            {
-                q.push(temp->right);
-            }
+        if (temp->left)
+        {
+            /* code */
+            q.push(temp->left);
+        }
+        if (temp->right)
+        {
+            /* code */
+            q.push(temp->right);
         }
     }
 }
 
-void InorderTraversal(Node* root){
-    if (root == NULL)
+void InOrderTraversing(Node *root)
+{
+    if (root == nullptr)
     {
         /* code */
         return;
     }
 
-    InorderTraversal(root->left);
+    InOrderTraversing(root->left);
     cout<<root->data<<" ";
-    InorderTraversal(root->right);
+    InOrderTraversing(root->right);
 }
 
-void PreorderTraversal(Node* root){
-    if (root == NULL)
+void PreOrderTraversal(Node* root){
+    if (root==nullptr)
     {
         /* code */
-        return;
+        return ;
     }
 
     cout<<root->data<<" ";
-    PreorderTraversal(root->left);
-    PreorderTraversal(root->right);
-}
+    PreOrderTraversal(root->left);
+    PreOrderTraversal(root->right);
 
-void PostorderTraversal(Node* root){
-    if (root == NULL)
+    
+}
+void PostOrderTraversal(Node* root){
+    if (root==nullptr)
     {
         /* code */
-        return;
+        return ;
     }
 
     
-    PostorderTraversal(root->left);
-    PostorderTraversal(root->right);
+    PostOrderTraversal(root->left);
+    PostOrderTraversal(root->right);
     cout<<root->data<<" ";
+
+    
+}
+
+int depth(Node* root){
+    if (root==nullptr)
+    {
+        /* code */
+        return 0;
+    }
+    
+    int leftdepth = depth(root->left);
+    int rightdepth = depth(root->right);
+
+    int ans = max(leftdepth , rightdepth)+1;
+    return ans;
+}
+
+int diameter(Node* root){
+    if (root==nullptr)
+    {
+        /* code */
+        return 0;
+    }
+
+    int leftonly = diameter(root->left);
+    int rightonly = diameter(root->right);
+
+    int rootalso = depth(root->left)+depth(root->right);
+
+    int ans = max(rootalso , max(leftonly,rightonly));
+    return ans;
+    
+    
 }
 
 int main()
 {
-    Node *root = NULL;
+
+    Node *root = nullptr;
     root = BuildTree();
 
-    LevelOrderTraversal(root);
+    PostOrderTraversal(root);
 }
