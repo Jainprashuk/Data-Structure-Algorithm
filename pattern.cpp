@@ -1,151 +1,178 @@
 #include <iostream>
-#include <queue>
-
 using namespace std;
 
 class Node
 {
 public:
     int data;
-    Node *left;
-    Node *right;
+    Node *next;
+
+    Node()
+    {
+        data = 0;
+        next = NULL;
+    }
 
     Node(int data)
     {
         this->data = data;
-        left = nullptr;
-        right = nullptr;
+        next = NULL;
     }
 };
 
-Node *BuildTree()
+void PrintLinkedList(Node *&head)
 {
-    int data;
-    cout << "Enter The value of root : ";
-    cin >> data;
-
-    if (data == -1)
+    Node *temp = head;
+    while (temp != NULL)
     {
         /* code */
-        return nullptr;
-    }
-
-    Node *root = new Node(data);
-
-    cout << "Enter data for left of " << data << " :" << endl;
-    root->left = BuildTree();
-
-    cout << "Enter data for right of " << data << " :" << endl;
-    root->right = BuildTree();
-
-    return root;
-}
-
-void LevelOrderTraversing(Node *root)
-{
-    queue<Node *> q;
-    q.push(root);
-
-    while (!q.empty())
-    {
-        /* code */
-        Node *temp = q.front();
-
-        q.pop();
-
         cout << temp->data << " ";
-
-        if (temp->left)
-        {
-            /* code */
-            q.push(temp->left);
-        }
-        if (temp->right)
-        {
-            /* code */
-            q.push(temp->right);
-        }
+        temp = temp->next;
     }
 }
 
-void InOrderTraversing(Node *root)
+void InsertAtHead(Node *&head, int data, Node *&tail)
 {
-    if (root == nullptr)
+    if (head == NULL)
     {
-        /* code */
+        Node *NewNode = new Node(data);
+        head = NewNode;
+        tail = NewNode;
         return;
     }
 
-    InOrderTraversing(root->left);
-    cout<<root->data<<" ";
-    InOrderTraversing(root->right);
+    Node *NewNode = new Node(data);
+    NewNode->next = head;
+    head = NewNode;
 }
 
-void PreOrderTraversal(Node* root){
-    if (root==nullptr)
+void InsertAtTail(Node *&head, Node *&tail, int data)
+{
+    if (head == NULL)
     {
         /* code */
-        return ;
+        Node *NewNode = new Node(data);
+        head = NewNode;
+        tail = NewNode;
+        return;
     }
 
-    cout<<root->data<<" ";
-    PreOrderTraversal(root->left);
-    PreOrderTraversal(root->right);
-
-    
-}
-void PostOrderTraversal(Node* root){
-    if (root==nullptr)
-    {
-        /* code */
-        return ;
-    }
-
-    
-    PostOrderTraversal(root->left);
-    PostOrderTraversal(root->right);
-    cout<<root->data<<" ";
-
-    
+    Node *NewNode = new Node(data);
+    tail->next = NewNode;
+    tail = NewNode;
 }
 
-int depth(Node* root){
-    if (root==nullptr)
+int LengthOfLinkedList(Node *head)
+{
+    int count = 0;
+    while (head != NULL)
     {
         /* code */
-        return 0;
+        count++;
+        head = head->next;
     }
-    
-    int leftdepth = depth(root->left);
-    int rightdepth = depth(root->right);
 
-    int ans = max(leftdepth , rightdepth)+1;
-    return ans;
+    cout << "Length : " << count << endl;
+    return count;
 }
 
-int diameter(Node* root){
-    if (root==nullptr)
+void InsertAtPosition(Node *&head, Node *&tail, int data, int pos)
+{
+    if (head == NULL)
     {
         /* code */
-        return 0;
+        Node *NewNode = new Node(data);
+        head = NewNode;
+        tail = NewNode;
+        return;
     }
 
-    int leftonly = diameter(root->left);
-    int rightonly = diameter(root->right);
+    if (pos == 0)
+    {
+        /* code */
+        InsertAtHead(head, data, tail);
+        return;
+    }
 
-    int rootalso = depth(root->left)+depth(root->right);
+    int length = LengthOfLinkedList(head);
 
-    int ans = max(rootalso , max(leftonly,rightonly));
-    return ans;
-    
-    
+    if (pos >= length)
+    {
+        /* code */
+        InsertAtTail(head, tail, data);
+        return;
+    }
+
+    int i = 0;
+    Node *prev = head;
+    while (i < pos - 1)
+    {
+        /* code */
+        prev = prev->next;
+        i++;
+    }
+
+    cout << prev->data << endl;
+    Node *curr = prev->next;
+
+    Node *NewNode = new Node(data);
+    NewNode->next = curr;
+    prev->next = NewNode;
+}
+
+void Deleation(Node *&head, Node *&tail, int pos)
+{
+    if (head == NULL)
+    {
+        /* code */
+        cout << " No Elemt To DElete";
+        return;
+    }
+
+    if (pos = 1)
+    {
+        Node *temp = head;
+        head = head->next;
+        temp->next = NULL;
+        delete temp;
+        return;
+    }
+
+    int length = LengthOfLinkedList(head);
+
+    if (pos == length)
+    {
+
+        int i = 0;
+        Node *prev = head;
+        while (i < length - 1)
+        {
+            /* code */
+            prev = prev->next;
+            i++;
+        }
+        Node *temp = tail;
+        tail = prev;
+        tail->next = NULL;    
+        delete temp;
+    }
 }
 
 int main()
 {
 
-    Node *root = nullptr;
-    root = BuildTree();
+    Node *head = new Node(1);
+    Node *first = new Node(2);
+    Node *second = new Node(3);
+    Node *third = new Node(4);
+    Node *tail = new Node(5);
 
-    PostOrderTraversal(root);
+    head->next = first;
+    first->next = second;
+    second->next = third;
+    third->next = tail;
+
+    Deleation(head, tail, 5);
+
+    PrintLinkedList(head);
 }

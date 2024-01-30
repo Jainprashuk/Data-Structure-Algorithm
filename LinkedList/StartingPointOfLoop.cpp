@@ -1,97 +1,83 @@
 #include <iostream>
 using namespace std;
 
-class Node{
-    public:
-    int data;
-    Node* next;
+class stack
+{
+public:
+    int size;
+    int *arr;
+    int top;
 
-    Node(){
-        data = 0;
-        next= nullptr;
+    stack(int size)
+    {
+        this->size = size;
+        arr = new int[size];
+        top = -1;
     }
 
-    Node(int data){
-        this->data = data;
-        this->next = nullptr;
+    void push(int data)
+    {
+        if (size - top > 1)
+        {
+            /* code */
+            top++;
+            arr[top] = data;
+        }
+        else
+        {
+            cout << "Not Enough Space";
+        }
+    }
+
+    void pop()
+    {
+        if (top == -1)
+        {
+            /* code */
+            cout << "Nothing To pop";
+        }
+        else
+        {
+            top--;
+        }
+    }
+
+    bool isempty(){
+        if (top==-1)
+        {
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
+    int gettop(){
+        return arr[top];
     }
 };
 
-
-void PrintLinkedList(Node* head){
-    Node* temp = head;
-    while (temp != nullptr)
+void Printstack(stack st){
+    while (!st.isempty())
     {
-        cout<<temp->data<<" ";
-        temp = temp->next;
+        /* code */
+        cout<<st.gettop()<<" ";
+        st.pop();
     }
-}
-
-int CheckCircular(Node* head){
-
-    Node* slow = head;
-    Node* fast = head;
-
-    bool hascycle = false;
-
-    while (fast != nullptr &&  fast->next!=nullptr)
-    {
-        fast = fast -> next -> next;
-        slow = slow -> next;
-        if (slow == fast)
-        {
-            // cout<<"loop found"<<endl;
-             hascycle = true;
-             break;;
-        } 
-        
-    } 
-
-    if (!hascycle)
-    {
-        return -1;
-    }
-
-    slow = head;
-
-    while (slow!= fast)
-    {
-        slow = slow->next;
-        fast = fast->next;
-    }
-    
-
-
-    return slow->data;
     
 }
 
-int main(){
+int main()
+{
+    stack st(6);
 
- Node* head =  new Node(0);
-    Node* first = new  Node(1);
-   
-    Node* second =  new Node(2);
-    Node* third =  new Node(3);
-    Node* fourth =  new Node(4);
-    Node* fifth =  new Node(5);
-    Node* sixth =  new Node(6);
-    Node* seventh =  new Node(7);
-    Node* tail =  new Node(8);
+    st.push(12);
+    st.push(12);
+    st.push(12);
+    st.push(12);
+    st.push(12);
+    st.pop();
 
-    head->next = first;
-    first->next = second;
-    second->next = third;
-    third->next = fourth;
-    fourth->next = fifth;
-    fifth->next = sixth;
-    sixth->next = seventh;
-
-
-    seventh->next = tail;
-    tail->next = fourth;
-
-    // PrintLinkedList(head);
-    cout<<CheckCircular(head);
+    Printstack(st);
 
 }

@@ -1,6 +1,6 @@
 #include <iostream>
-#include<queue>
-#include<map>
+#include <queue>
+#include <map>
 using namespace std;
 
 class Node
@@ -18,7 +18,7 @@ public:
     }
 };
 
-Node* BuildTree()
+Node *BuildTree()
 {
     int data;
     cout << "Enter The Data : " << endl;
@@ -43,53 +43,47 @@ Node* BuildTree()
     return root;
 }
 
-void PrintTopView(Node* root){
+void PrintBottomView(Node *root)
+{
     if (root == NULL)
     {
         /* code */
         return;
     }
 
-    map<int,int> topNode;
+    map<int, int> topNode;
 
-    queue< pair<Node*,int>> q;
-    q.push(make_pair(root,0));
+    queue<pair<Node *, int>> q;
+    q.push(make_pair(root, 0));
 
     while (!q.empty())
     {
         /* code */
-        pair<Node* , int> temp = q.front();
+        pair<Node *, int> temp = q.front();
         q.pop();
 
-        Node* tempNode = temp.first;
+        Node *tempNode = temp.first;
         int hd = temp.second;
 
-        if (topNode.find(hd) == topNode.end())
-        {
-            /* code */
-            topNode[hd] = tempNode->data;
-        }
+        topNode[hd] = tempNode->data;
 
         if (tempNode->left)
         {
             /* code */
-            q.push(make_pair(tempNode->left,hd-1));
+            q.push(make_pair(tempNode->left, hd - 1));
         }
         if (tempNode->right)
         {
             /* code */
-            q.push(make_pair(tempNode->right,hd+1));
+            q.push(make_pair(tempNode->right, hd + 1));
         }
     }
 
     // printing answer
-    for(auto i:topNode){
-        cout<<i.first<<" "<<i.second<<endl;
+    for (auto i : topNode)
+    {
+        cout << i.first << " " << i.second << endl;
     }
-    
-
-
-    
 }
 
 int main()
