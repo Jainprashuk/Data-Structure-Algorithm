@@ -1,0 +1,5 @@
+In bst for every node it should satisfy :
+at left - small then root
+at right - bigger  then root
+
+In BSt Inorder is always an Sorted (ascending order)

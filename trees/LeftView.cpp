@@ -100,7 +100,6 @@ void PrintLeftViewViaReccursion(Node* root , vector<int> &ans , int level){
         ans.push_back(root->data);
     }
 
-
     PrintLeftViewViaReccursion(root->left , ans , level+1);
     PrintLeftViewViaReccursion(root->right , ans , level+1);
 
