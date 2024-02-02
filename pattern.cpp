@@ -1,10 +1,9 @@
 #include<iostream>
-#include<queue>
 using namespace std;
 
 class Node{
     public:
-    int data;
+    int data ; 
     Node* left;
     Node* right;
 
@@ -16,39 +15,62 @@ class Node{
 };
 
 Node* BuildTree(){
-    cout<<"Enter The Data of Node :";
-    int data;
+    int data ;
+    cout<<"Enter The Data of Node : ";
     cin>>data;
 
     if (data == -1)
     {
-        /* code */
         return NULL;
     }
 
     Node* root = new Node(data);
 
-    cout<<"Enter the data for left of "<<data<<" : "<<endl;
+    cout<<"enter the data for left of "<<data<<" : "<<endl;
     root->left = BuildTree();
-
-    cout<<"Enter the data for right of "<<data<<" : "<<endl;
+    cout<<"enter the data for right of "<<data<<" : "<<endl;
     root->right = BuildTree();
+
+    return root;   
+}
+
+Node* BuildBST(Node* &root , int data){
+    if (root == NULL)
+    {
+        /* code */
+        Node* root = new Node(data);
+        return root;
+    }
+
+    if (data<root->data)
+    {
+        /* code */
+        root->left = BuildBST(root , data);
+    }
+    else if (data>root->data)
+    {
+        /* code */
+        root->right = BuildBST(root , data);
+    }
 
     return root;
     
-}
-
-void LevelOrderTraversing(Node* root){
-    queue<Node*>q;
-    q.push(root);
-
-    while (!q.empty())
-    {
-        /* code */
-    }
     
 }
 
-int main(){
+void BUIldingBST(Node* &root){
+    int data;
+    cin>>data;
 
+    while (data != -1)
+    {
+        /* code */
+        BuildBST(root,data);
+        cin>>data;
+    }
+}
+
+int main(){
+    Node* root = NULL;
+    root = BuildTree();
 }

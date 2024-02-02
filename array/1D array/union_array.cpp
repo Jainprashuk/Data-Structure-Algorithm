@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include<set>
 using namespace std;
 
 void union_array(vector<int> arr, vector<int> brr)
@@ -22,6 +23,19 @@ void union_array(vector<int> arr, vector<int> brr)
         cout << crr[i] << " ";
     }
 }
+
+int doUnion(int a[], int n, int b[], int m)  {
+        //code here
+        set<int> ans;
+        for(int i=0 ; i<n ; i++){
+            ans.insert(a[i]);
+        }
+        for(int i=0 ; i<m ; i++){
+            ans.insert(b[i]);
+        }
+        
+        return ans.size();
+    }
 
 
 int main()
