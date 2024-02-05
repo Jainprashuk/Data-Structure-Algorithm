@@ -23,7 +23,7 @@ int findPosition(int arr[], int n, int element) {
                 }
         }
         return -1;
-}
+} 
 
 //build tree from inorder and preorder traversal
 Node* buildTreeFromPreOrderInOrder(int inorder[], int preorder[], int size, int &preIndex, int inorderStart, int inorderEnd) {
@@ -36,10 +36,12 @@ Node* buildTreeFromPreOrderInOrder(int inorder[], int preorder[], int size, int 
         //Step A:
         int element = preorder[preIndex++];
         Node* root = new Node(element);
+
         int pos = findPosition(inorder, size, element);
 
         //step B: root->left solve
         root->left = buildTreeFromPreOrderInOrder(inorder, preorder, size, preIndex, inorderStart, pos-1);
+        
         //Step C: root->right solve
         root->right = buildTreeFromPreOrderInOrder(inorder, preorder, size, preIndex, pos+1, inorderEnd);
 

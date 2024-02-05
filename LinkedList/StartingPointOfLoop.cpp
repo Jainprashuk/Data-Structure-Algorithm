@@ -1,83 +1,83 @@
-#include <iostream>
+// can be done by : single pointer , slow fast algo , by using mapp
+#include<iostream>
 using namespace std;
 
-class stack
-{
-public:
-    int size;
-    int *arr;
-    int top;
+class Node{
+    public:
+    int data;
+    Node* next;
 
-    stack(int size)
-    {
-        this->size = size;
-        arr = new int[size];
-        top = -1;
+    Node(){
+        data = 0;
+        next = NULL;
     }
 
-    void push(int data)
+    Node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+
+};
+
+int StartPointOfLoop(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+
+    bool hasloop = false;
+
+    while (fast!=NULL && fast->next!=NULL)
     {
-        if (size - top > 1)
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast)
         {
             /* code */
-            top++;
-            arr[top] = data;
-        }
-        else
-        {
-            cout << "Not Enough Space";
-        }
-    }
-
-    void pop()
-    {
-        if (top == -1)
-        {
-            /* code */
-            cout << "Nothing To pop";
-        }
-        else
-        {
-            top--;
-        }
-    }
-
-    bool isempty(){
-        if (top==-1)
-        {
-            return true;
-        }else{
-            return false;
+            hasloop = true;
+            break;
         }
         
     }
 
-    int gettop(){
-        return arr[top];
-    }
-};
-
-void Printstack(stack st){
-    while (!st.isempty())
+    if (hasloop)
     {
-        /* code */
-        cout<<st.gettop()<<" ";
-        st.pop();
+        slow = head;
+
+        while (slow!=fast)
+        {
+            /* code */
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        return slow->data;
+        
     }
     
+    
+
+
 }
 
-int main()
-{
-    stack st(6);
 
-    st.push(12);
-    st.push(12);
-    st.push(12);
-    st.push(12);
-    st.push(12);
-    st.pop();
+int main(){
 
-    Printstack(st);
+    Node* head = new Node(0);
+    Node* first = new Node(1);
+    Node* second = new Node(2);
+    Node* third = new Node(3);
+    Node* fourth = new Node(4);
+    Node* tail = new Node(5);
+
+    head->next = first;
+    first->next = second;
+    second->next = third;
+    third->next = fourth;
+    fourth->next = third;
+
+    // PrintLinkedList(head);
+    cout<<StartPointOfLoop(head);
+   
+
 
 }

@@ -1,0 +1,8 @@
+// data structure which exist in form of compleate binary  tree and follows a heap property(max heap , min heap)
+
+//compleate binary Tree - all levels are compleately fill exepth last level and filling happens from left to right
+
+// visualize in form of tree but create from array 
+
+
+// in cbt (n/2)+1 - n tk sari leaf nodes hogi..

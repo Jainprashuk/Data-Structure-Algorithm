@@ -103,7 +103,7 @@ int main(){
     tail->next = third;
 
     
-    // RemoveLoopOfLinkedList(head);
+    RemoveLoopOfLinkedList(head);
     PrintLinkedList(head);
 
 
