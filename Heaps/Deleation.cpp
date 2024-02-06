@@ -104,7 +104,7 @@ int main()
     }
     cout << endl;
 
-    h.insert(110);
+    // h.insert(110);
     cout << "Printing The Heap : " << endl;
     for (int i = 0; i <= h.size; i++)
     {
