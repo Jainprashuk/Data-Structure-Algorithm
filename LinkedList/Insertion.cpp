@@ -32,8 +32,6 @@ void insertAtHead(Node* &head, Node* &tail, int data) {
                 //step3:
                 head = newNode;
         }
-
-
 }
 //I want to insert a node right at the end of LINKED LIST
 void insertAtTail(Node* &head,Node* &tail, int data) {

@@ -100,7 +100,6 @@ int Height(Node *root)
 bool BalancedTree(Node* root){
     if (root == NULL)
     {
-        /* code */
         return true;
     }
 
