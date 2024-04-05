@@ -1,117 +1,90 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <iostream>
+#include <stack>
 using namespace std;
 
+void FindMiddle(stack<int> st, int totalsize)
+{
+    if ((totalsize / 2) + 1 == st.size())
+    {
+        cout << st.top();
+        return;
+    }
 
-class Heap{
-    public:
-    int totalsize;
-    int size;
-    int *arr;
-    
-    Heap(int totalsize){
-        this->totalsize = totalsize;
-        arr = new int[totalsize];
-        size = 0;
-    }
-    
-    void Insert(int data){
-        size = size+1;
-        int index = size;
-        arr[size] = data;
-        
-        while(index>1){
-            int parentindex = index/2;
-            if(arr[parentindex]<arr[index]){
-                swap(arr[parentindex],arr[index]);
-            }else{
-                break;
-            }
-        }
-    }
-    
-    void DeleteElement(){
-        int index = 1;
-        arr[index] = arr[size];
-        size--;
-        
-       
-        
-        while(index<size){
-            
-             int maxindex = index;
-        int leftindex = 2*index;
-        int rightindex = (2*index)+1;
-        
-            if(leftindex<size && arr[leftindex]>arr[maxindex]){
-                maxindex = leftindex;
-            }
-            if(rightindex<size && arr[rightindex]>arr[maxindex]){
-                maxindex = rightindex;
-            }
-            
-            if(maxindex != index){
-                swap(arr[maxindex] , arr[index]);
-                index = maxindex;
-            }else{
-                return;
-            }
-        }
-    }
-};
+    int temp = st.top();
+    st.pop();
 
-void Heapify(int arr[] , int size , int  i){
-    
-    int index = i ;
-    int leftindex = i*2;
-    int rightindex = (i*2)+1;
-    int maxindex = index;
-    
-     if(leftindex<size && arr[leftindex]>arr[maxindex]){
-         maxindex = leftindex;
-     }
-     
-     if(rightindex<size && arr[rightindex]>arr[maxindex]){
-         maxindex = rightindex;
-     }
-     
-     if(maxindex != index){
-         swap(arr[maxindex] , arr[index]);
-         index = maxindex;
-         Heapify(arr ,size , index);
-     }
+    FindMiddle(st, totalsize);
+
+    st.push(temp);
 }
 
-void BuildHeap(int arr[] , int n){
-    for(int i = n/2 ; i>0 ; i--){
-        Heapify(arr,n,i);
-    }
-}
-
-void HeapSort(int arr[] , int n){
-    while(n>1){
-        swap(arr[n] , arr[1]);
-        n--;
-        Heapify(arr,n,1);
-    }
-}
-
-int main(){
-   int arr[] = {-1, 12, 56, 43, 6, 78, 87, 5, 44, 3, 23, 32};
-    int n = 11;
-
-    BuildHeap(arr, n);
-
-    for (int i = 0; i < n; i++)
+void insertAtBootom(stack<int> &st, int data)
+{
+    if (st.empty())
     {
         /* code */
-        cout << arr[i] << " ";
+        st.push(data);
+        return;
     }
-    cout << endl;
 
-    HeapSort(arr, n);
-    for (int i = 0; i < n; i++)
+    int temp = st.top();
+    st.pop();
+
+    insertAtBootom(st, data);
+
+    st.push(temp);
+}
+
+void reverseStack(stack<int> &st){
+    if (st.empty())
     {
-        cout << arr[i] << " ";
+        return;
+        /* code */
     }
+
+    int temp = st.top();
+    st.pop();
+
+    reverseStack(st);
+
+    insertAtBootom(st,temp);
+
+    
+}
+
+void PrintStack(stack<int>st){
+    while (!st.empty())
+    {
+        /* code */
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    cout<<endl;
+    
+}
+
+
+int main()
+{
+
+    stack<int> st;
+    st.push(1);
+    st.push(2);
+    st.push(3);
+    st.push(4);
+    st.push(5);
+    st.push(6);
+
+    // FindMiddle(st, st.size());
+
+    // insertAtBootom(st,100);
+    cout<<"Before : ";
+    PrintStack(st);
+    
+    reverseStack(st);
+
+    cout<<"after : ";
+    PrintStack(st);
+    
+    
 }

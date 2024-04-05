@@ -13,9 +13,12 @@ int fibonacciWithoutDP(int n) {
 int fibonacciWithDP(int n) {
     if (n <= 1)
         return n;
+
     if (memo[n] != -1)
         return memo[n];
+
     memo[n] = fibonacciWithDP(n - 1) + fibonacciWithDP(n - 2);
+    
     return memo[n];
 }
 

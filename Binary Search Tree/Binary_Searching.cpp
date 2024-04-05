@@ -53,7 +53,8 @@ void TakeInput(Node *&root)
     }
 }
 
-bool BinarySearch(Node* root , int target){
+bool BinarySearch(Node *root, int target)
+{
     if (root == NULL)
     {
         /* code */
@@ -69,18 +70,13 @@ bool BinarySearch(Node* root , int target){
     if (target > root->data)
     {
         /* code */
-        return BinarySearch(root->right,target);
-
-    }else{
-        return BinarySearch(root->left , target);
+        return BinarySearch(root->right, target);
     }
-
-
-    
-    
-    
+    else
+    {
+        return BinarySearch(root->left, target);
+    }
 }
-
 
 int main()
 {
@@ -88,13 +84,14 @@ int main()
     Node *root = NULL;
     TakeInput(root);
 
-    bool ans = BinarySearch(root , 14);
+    bool ans = BinarySearch(root, 14);
     if (ans)
     {
         /* code */
-        cout<<"true";
-    }else{
-        cout<<"false";
+        cout << "true";
     }
-    
+    else
+    {
+        cout << "false";
+    }
 }

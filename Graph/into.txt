@@ -1,0 +1,17 @@
+// graph is a collection of nodes(stores data ) & edges (connects nodes)
+
+types of graphs 
+1 - directed     - unidirection
+2 - undirected   - bidirection
+
+weighted graph - given weight on edges
+
+degree - kitni edjes connected hai ya us node se kisi or node pe direct kr ri hai
+indegree - coming edjes
+outdegree - ouutgoing edges
+
+
+path - sequence of node while making sure no node travel twice
+
+cyclic graph - cycle bn rhi hai
+acyclic - cycle nhi bn rhi hoti hai

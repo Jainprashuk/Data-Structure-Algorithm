@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form with JS Validations</title>
+</head>
+
+<body>
+    <style>
+        .container {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        p.error {
+            width: 100%;
+            color: red;
+            font-size: 12px;
+            text-align: right;
+
+        }
+
+        .showSubmit {
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 0 10px 5px #000000;
+            top: 50%;
+            left: 50%;
+            height: fit-content;
+            width: fit-content;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+    </style>
+    <div class="container" id="container">
+        <form>
+            <label for="name">Name: *</label>
+            <input type="text" id="name" name="name" />
+            <p class="error" id="nameError"></p>
+            <br />
+            <label for="email">Email: *</label>
+            <input type="email" id="email" name="email" />
+            <p class="error" id="emailError"></p>
+            <br />
+            <label for="password">Password: *</label>
+            <input type="password" id="password" name="password" />
+            <p class="error" id="passError"></p>
+            <br />
+            <label for="confirmPassword">Confirm Password: *</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" />
+            <p class="error" id="confirmPassError"></p>
+            <br />
+            <input type="button" value="Submit" onclick="handleSubmit()" />
+        </form>
+    </div>
+    <div class="showSubmit" id="final" style="display: none">
+        <h1>Form Submitted Successfully</h1>
+        <p>Name:</p>
+        <b><span id="showName"></span></b>
+        <p>Email:</p>
+        <b><span id="showEmail"></span></b>
+        <p>Password:</p>
+        <img src="https://i.pinimg.com/originals/69/57/59/6957597c34f0a1cf1973140a59c3c7f2.gif" alt="Main nahi bataunga"
+            style="height: fit-content; width: fit-content" />
+    </div>
+    <script>
+        function checkName() {
+            var name = document.getElementById("name").value;
+            if (name == "") {
+                document.getElementById("nameError").innerHTML = " Name is required";
+            } else if (name.length < 2) {
+                document.getElementById("nameError").innerHTML =
+                    "* Name must be at least 2 characters";
+            } else {
+                document.getElementById("nameError").innerHTML = "";
+            }
+        }
+
+        function checkEmail() {
+            var email = document.getElementById("email").value;
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (email == "") {
+                document.getElementById("emailError").innerHTML =
+                    "* Email is required";
+            } else if (!emailRegex.test(email)) {
+                document.getElementById("emailError").innerHTML =
+                    "* Email is invalid";
+            } else if (email.indexOf(".com") == -1) {
+                document.getElementById("emailError").innerHTML =
+                    "* Email is invalid";
+            } else {
+                document.getElementById("emailError").innerHTML = "";
+            }
+        }
+
+        function checkPass() {
+            var password = document.getElementById("password").value;
+            var uppercaseRegex = /[A-Z]/;
+            var lowercaseRegex = /[a-z]/;
+            var specialCharRegex = /[!@#$%^&()_+\-=[\]{};':"\\|,.<>/?]/;
+            if (password == "") {
+                document.getElementById("passError").innerHTML =
+                    " Password is required";
+            } else if (password.length < 8) {
+                document.getElementById("passError").innerHTML =
+                    "* Password must be at least 8 characters";
+            } else if (!uppercaseRegex.test(password)) {
+                document.getElementById("passError").innerHTML =
+                    "* Password must contain at least one uppercase letter";
+            } else if (!lowercaseRegex.test(password)) {
+                document.getElementById("passError").innerHTML =
+                    "* Password must contain at least one lowercase letter";
+            } else if (!specialCharRegex.test(password)) {
+                document.getElementById("passError").innerHTML =
+                    "* Password must contain at least one special character";
+            } else {
+                document.getElementById("passError").innerHTML = "";
+            }
+        }
+
+        function checkConfirmPass() {
+            var message = document.getElementById("confirmPassword").value;
+            if (message == "") {
+                document.getElementById("confirmPassError").innerHTML =
+                    "* Confirm Password is required";
+            } else if (message != document.getElementById("password").value) {
+                document.getElementById("confirmPassError").innerHTML =
+                    "* Passwords do not match";
+            } else {
+                document.getElementById("confirmPassError").innerHTML = "";
+            }
+        }
+
+        function handleSubmit() {
+            checkName();
+            checkEmail();
+            checkPass();
+            checkConfirmPass();
+
+            let flag = false;
+
+            errors = document.getElementsByClassName("error");
+            for (let i = 0; i < errors.length; i++) {
+                if (errors[i].innerHTML != "") {
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (flag) {
+                return;
+            }
+
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            let showDetails = document.getElementById("final");
+            document.getElementById("showName").innerHTML = name;
+            document.getElementById("showEmail").innerHTML = email;
+            showDetails.style.display = "flex";
+            document.getElementById("container").style.display = "none";
+            setTimeout(() => {
+                showDetails.style.display = "none";
+                document.getElementById("container").style.display = "flex";
+                let inputs = document.getElementsByTagName("input");
+                for (let i = 0; i < inputs.length; i++) {
+                    if (inputs[i].type !== "button") {
+                        inputs[i].value = "";
+                    }
+                }
+            }, 10000);
+        }
+    </script>
+    <script></script>
+</body>
+
+</html>
