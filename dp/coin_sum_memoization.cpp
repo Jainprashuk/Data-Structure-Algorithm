@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Recursive function to count the numeber of distinct ways
+
 // to make the sum by using n coins
 int count(vector<int>& coins, int n, int sum,
 		vector<vector<int> >& dp)

@@ -1,0 +1,1 @@
+// brute : exponential in nature : genrate all sub sequence by reccursion of both string and then find max length one

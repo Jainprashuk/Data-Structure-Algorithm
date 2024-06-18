@@ -1,90 +1,89 @@
-#include <iostream>
-#include <stack>
+#include<iostream>
+#include<queue>
 using namespace std;
 
-void FindMiddle(stack<int> st, int totalsize)
-{
-    if ((totalsize / 2) + 1 == st.size())
-    {
-        cout << st.top();
+class Node{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int data){
+        this->data = data;
+        left = NULL;
+        right = NULL;
+    }
+
+};
+
+void Inorder(Node* root){
+
+    if(root == nullptr){
         return;
     }
 
-    int temp = st.top();
-    st.pop();
-
-    FindMiddle(st, totalsize);
-
-    st.push(temp);
+    Inorder(root->left);
+    cout<<root->data;
+    Inorder(root->right);
 }
 
-void insertAtBootom(stack<int> &st, int data)
-{
-    if (st.empty())
+void LevelOrderTraversing(Node* root){
+    if(root == NULL) return ;
+
+    queue<Node*>q;
+    q.push(root);
+
+    while(!q.empty()){
+
+        Node* temp = q.front();
+
+        q.pop();
+
+        cout<<temp->data;
+
+        if (temp->left)
+        {
+            /* code */
+            q.push(temp->left);
+        }
+
+        if (temp->right)
+        {
+            /* code */
+            q.push(temp->right);
+        }
+        
+    }
+}
+
+Node* BuildTree(){
+    int data;
+    cout << "Enter The Data : " << endl;
+    cin >> data;
+
+    if (data == -1)
     {
-        /* code */
-        st.push(data);
-        return;
+        return NULL;
     }
 
-    int temp = st.top();
-    st.pop();
+    Node *root = new Node(data);
 
-    insertAtBootom(st, data);
+    cout<<"Enter For Left of tree : "<<endl;
+    root->left = BuildTree();
 
-    st.push(temp);
-}
+    cout<<"Enter For right of tree : "<<endl;
+    root->right = BuildTree();
 
-void reverseStack(stack<int> &st){
-    if (st.empty())
-    {
-        return;
-        /* code */
-    }
 
-    int temp = st.top();
-    st.pop();
+    return root;
 
-    reverseStack(st);
 
-    insertAtBootom(st,temp);
-
-    
-}
-
-void PrintStack(stack<int>st){
-    while (!st.empty())
-    {
-        /* code */
-        cout<<st.top()<<" ";
-        st.pop();
-    }
-    cout<<endl;
-    
 }
 
 
-int main()
-{
+int main(){
+    Node* root = NULL;
+    root = BuildTree();
 
-    stack<int> st;
-    st.push(1);
-    st.push(2);
-    st.push(3);
-    st.push(4);
-    st.push(5);
-    st.push(6);
-
-    // FindMiddle(st, st.size());
-
-    // insertAtBootom(st,100);
-    cout<<"Before : ";
-    PrintStack(st);
-    
-    reverseStack(st);
-
-    cout<<"after : ";
-    PrintStack(st);
-    
-    
+    LevelOrderTraversing(root);
 }
