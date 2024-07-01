@@ -1,0 +1,29 @@
+// ************* Two ways of graph Representation *****************
+// 1 - Adjacency Matrix (2D Array) - space : o(N^2)
+// 2 - Adjacency list (Map , List , vector , set)
+
+// ************* graphs are not neccesarily cyclic *****************//
+
+
+// ************ types of graph **************//
+// 1. undirected 
+// 2. directed
+
+
+
+// ********** cycles in graph ***************//
+// * undirected cyclic
+// * directed cyclic
+// * directed acyclic graph (DAG)
+
+
+// *********** degree of graph **********
+
+// Total degree of graph = 2(number of edges)
+// for directed - number  of connected edges
+// for directed : i) indegree -> edges coming to that node (incoming edges)
+             //  ii) outdegree -> -> edges coming out of that node (outgoing edges)
+
+
+// ********** Edge Weight *************//
+// if not meantion take unit weight ie 1
